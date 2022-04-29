@@ -1,0 +1,20 @@
+/*** ^^A -*-C++-*- **********************************************/
+/*	split-relax		1/25/2006			*/
+/****************************************************************/
+/*	Short Description :					*/
+/*	Program which splits a pseudo 3d file into single ser,	*/
+/*  Note: save this in C:\Bruker\Topspin#.x.x\exp\stan\nmr\au\src\user	*/
+/****************************************************************/
+
+
+int td, texpno=1000;
+
+GETCURDATA
+GETINT("Enter the first target expno: ",texpno)
+FETCHPAR3S("TD",&td)
+i1=0;
+TIMES(td)
+  RSER2D(23, i1+1,i1+texpno)
+  i1 ++;
+END
+QUITMSG("--- split-relax finished ---")
